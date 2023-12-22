@@ -1,59 +1,15 @@
 # REPASO SQL
 
-## Curso 1: Consultas en SQL para principiantes
-+ URL: https://www.udemy.com/course/sql-desde-cero-curso-practico
-
-1. Crear base de datos:
+## Clase 1:
+1.  Mostrar tablas de la base de datos seleccionada:
     ```sql
-    CREATE DATABASE midb;
+    SHOW TABLES;RIBE tabla_x;
     ```
-    + **Nota**: para este curso crearemos las bases de datos **world** y **employees**.
-2. Mostrat bases de datos:
-    ```sql
-    SHOW DATABASES;
-    ```
-3. Crear usuario de base de datos:
-    ```sql
-    CREATE USER 'nuevo_usuario'@'localhost' IDENTIFIED BY 'password_del_usuario';
-    ```
-4. Establecer permisos a un usuario:
-    ```sql
-    -- Permisos al usuario nuevo_usuario sobre todas las bases de datos y todas las tablas
-    GRANT ALL PRIVILEGES ON *.* TO 'nuevo_usuario'@'localhost';
-    -- Permisos al usuario nuevo_usuario sobre todas las tablas de la base de datos midb
-    GRANT ALL PRIVILEGES ON midb.* TO 'nuevo_usuario'@'localhost';
-    ```
-5. Actualizar los privilegios de los usuarios:
-    ```sql
-    FLUSH PRIVILEGES;
-    ```
-6. Ingresar a MySQL por consola:
-    + $ mysql -uroot -p
-    + **Nota**: La **u** en **uroot** significa **user** y **root** el **usuario**. El -p debe colocarse si el usuario fue creado con password.
-7. Ingresar a una base de datos por consola:
-    + mysql> use midb;
-8. Importar una base de datos por consola que se encuentre en la carpeta **downloads** de **Windows**:
-    + mysql> SOURCE Downloads\\midb.sql;
-    + **Nota**: para este curso importaremos la base de datos **world.sql**, **employees** y **numpidb** ubicada en **soportes\curso1\world.sql**, **soportes\curso1\employees.sql** y **soportes\curso1\employees.sqlnumpidb.sql** respectivamente.
-9. Salir de MySQL por consola:
-    + mysql> exit
-10. Seleccionar base de datos:
-    ```sql
-    USE midb
-    ```
-11. Mostrar tablas de la base de datos seleccionada:
-    ```sql
-    SHOW TABLES;
-    ```
-12. Ver la estructura de una tabla:
-    ```sql
-    DESCRIBE tabla_x;
-    ```
-13. Comentario de una lína:
+3.  Comentario de una lína:
     ```sql
     -- Este es un comentario de una línea en SQL
     ```
-14. Comentario de varias líneas:
+4.  Comentario de varias líneas:
     ```sql
     /*
         Este es
@@ -62,28 +18,32 @@
         líneas
     */
     ```
-14. Seleccionar todos los campos de una tabla:
+5.  Seleccionar todos los campos de una tabla:
     ```sql
     SELECT * FROM tabla_x;
     ```
-15. Seleccionar un campo de una tabla:
+6.  Seleccionar un campo de una tabla:
     ```sql
     SELECT campo_x FROM tabla_x;
     ```
-16. Seleccionar varios campos de una tabla:
+7.  Seleccionar varios campos de una tabla:
     ```sql
     SELECT campo_a, campo_b, campo_c FROM tabla_X;
     ```
-17. Seleccionar campos de una tabla con alias:
+8.  Seleccionar campos de una tabla con alias:
     ```sql
     SELECT campo_a AS otro_nombre, campo_b AS "Nombre con espacios" FROM tabla_x;
     ```
-18. Seleccionar valores unicos de un determinado campo en una tabla:
+9.  Seleccionar valores unicos de un determinado campo en una tabla:
     ```sql
     SELECT DISTINCT campo_x FROM tabla_x;
     ```
     + **Nota**: si se colocan varios campos, estos deberán ser iguales respectivamentes a otros para que sean filtrados.
-19. Ejemplos de operadores aritméticos (+, -, *, /, DIV, MOD):
+
+
+
+## Clase 2:
+10. Ejemplos de operadores aritméticos (+, -, *, /, DIV, MOD):
     ```sql
     -- OPERADORES ARITMÉTICOS
     -- Suma
@@ -101,7 +61,7 @@
     -- Calculos sobre una consulta
     SELECT campo_a, (campo_b / campo_c) AS "Relacion de B/C" FROM tabla_X;
     ```
-20. Ejemplos de operadores de comparación (<, <=, >, >=, =, != ó <>):
+11. Ejemplos de operadores de comparación (<, <=, >, >=, =, != ó <>):
     ```sql
     -- OPERADORES DE COMPARACIÓN (Resulatos: 1: true, 0: false)
     -- Menor
@@ -119,7 +79,7 @@
     SELECT FALSE != TRUE;
     SELECT 'HOLA' != 'BYE';
     ```
-21. Ejemplos de operadores lógicos (AND, OR, NOT):
+12. Ejemplos de operadores lógicos (AND, OR, NOT):
     ```sql
     SELECT TRUE AND FALSE;
     SELECT FALSE OR TRUE;
@@ -128,7 +88,7 @@
     SELECT 0 OR 1;
     SELECT NOT 1;
     ```
-22. Ejemplos de filtros con WHERE en las consultas:
+13. Ejemplos de filtros con WHERE en las consultas:
     ```sql
     SELECT * FROM tabla_x WHERE campo_a = 12;
     SELECT * FROM tabla_x WHERE campo_a > 3 AND campo_b = "valor_x";
@@ -148,7 +108,7 @@
     -- Uso de comodines con fecha
     SELECT * FROM tabla_x WHERE campo_fecha LIKE "1972-__-12";
     ```
-23. Obtener registros en donde unos de sus campos se encuentren dentro de un rango (Operador BETWEEN):
+14. Obtener registros en donde unos de sus campos se encuentren dentro de un rango (Operador BETWEEN):
     ```sql
     -- El rango a usar BETWEEN debe ir de menor a mayor (Se usa para rangos numéricos y de fecha)
     SELECT * FROM tabla_x WHERE campo_x BETWEEN 112 AND 217;
@@ -161,13 +121,13 @@
 
     SELECT * FROM tabla_x WHERE campo_fecha_x BETWEEN "1972-01-01" AND "1972-12-31";
     ```
-24. Ejemplo de uso del operador IN:
+15. Ejemplo de uso del operador IN:
     ```sql
     SELECT * FROM tabla_x WHERE campo_z IN ("Valor_1", "Valor_2");
     -- La siguiente consulta arroja el mismo resultado que la anterior
     SELECT * FROM tabla_x WHERE campo_z LIKE "Valor_1" OR campo_z LIKE "Valor_2";
     ```
-25. Ejemplo de uso de **DATEDIFF**:
+16. Ejemplo de uso de **DATEDIFF**:
     + Encontrar las personas que tengan una edad mayor a 60 años
     ```sql
     SELECT 
@@ -180,7 +140,7 @@
         DATEDIFF(CURRENT_TIMESTAMP, campo_fecha_nacimiento) < 61;
     -- Nota: existen formas más eficientes de llegar a este mismo resultado
     ```
-26. Ordenar tabla por campos:
+17. Ordenar tabla por campos:
     ```sql
     SELECT * FROM tabla_x ORDER BY campo_2;
     -- La siguiente consulta es equivalente a la anterior, ya que por defecto se ordena de forma ascendente
@@ -192,7 +152,7 @@
 
     SELECT * FROM tabla_x WHERE campo_3 LIKE "Pe%" ORDER BY campo_2;
     ```
-27. Ignorar o buscar los registros NULL:
+18. Ignorar o buscar los registros NULL:
     ```sql
     SELECT * FROM tabla_x WHERE campo_4 IS NULL;
     -- La siguiente expresión es equivalente a la anterior
@@ -202,7 +162,7 @@
     -- La siguiente expresión es equivalente a la anterior
     SELECT * FROM tabla_x WHERE NOT campo_4 IS NULL;
     ```
-28. Limitar las busquedas de registros:
+19. Limitar las busquedas de registros:
     ```sql
     -- Muestra los primeros 10 registros
     SELECT * FROM tabla_x ORDER BY campo_2 DESC LIMIT 10;
@@ -213,11 +173,11 @@
     -- Muestra los primeros 10 registros a partir del registro 21
     SELECT * FROM tabla_x ORDER BY campo_2 DESC LIMIT 20, 10;
     ```
-29. Obtener los 5 departamentos con los nombres más largos de la tabla_x:
+20. Obtener los 5 departamentos con los nombres más largos de la tabla_x:
     ```sql
     SELECT * FROM tabla_x ORDER BY LENGTH(campo_departamento) LIMIT 5;
     ```
-30. Ejemplo de funciones de agregación (SUM, AVG, MIN, MAX, STDDEV):
+21. Ejemplo de funciones de agregación (SUM, AVG, MIN, MAX, STDDEV):
     ```sql
     -- Sumar los valores de un determinado campo de todos los registros de una tabla
     SELECT SUM(campo_numerico) AS 'Total' FROM tabla_x;
@@ -241,12 +201,12 @@
     -- Obtener el total de registros de una tabla
     SELECT COUNT(*) AS 'total de registros' FROM tabla_x;
     ```
-31. Ejemplo de uso de la clausula **GROUP BY**:
+22. Ejemplo de uso de la clausula **GROUP BY**:
     ```sql
     -- Encontrar la superficie total de cada continente
     SELECT continente, SUM(superficie) AS 'área total' FROM paises GROUP BY continente;
     ```
-32. Ejemplo de uso de la clausula **HAVING**:
+23. Ejemplo de uso de la clausula **HAVING**:
     ```sql
     -- Mostrar los continentes con esperanza de vida media mayor a 70 años
     SELECT 
@@ -254,7 +214,7 @@
     FROM paises GROUP BY continente HAVING AVG(EsperanzaVida) > 70;
     ```
     + **Nota**: **HAVING** va despues de un **GROUP BY**.
-33. Estructura básica de un **JOIN**:
+24. Estructura básica de un **JOIN**:
     ```sql
     -- INNER JOIN: combinación de ambas tablas por igual (se toman los elementos de ambas tablas)
     SELECT * FROM tabla_x x JOIN tabla_y y ON x.campo_tabla_x = y.campo_tabla_y;
@@ -266,7 +226,7 @@
     SELECT * FROM tabla_x x RIGHT JOIN tabla_y y ON x.campo_tabla_x = y.campo_tabla_y;
     ```
     + **Nota**: por defecto al aplicar un **JOIN** se esta aplicando un **INNER JOIN**.
-34. Ejemplo de uso de **INNER JOIN**:
+25. Ejemplo de uso de **INNER JOIN**:
     ```sql
     /*
         Campos de la tabla estudiantes:
@@ -292,7 +252,7 @@
     FROM estudiantes e INNER JOIN secciones s
     ON e.seccion_id = s.id
     ```
-35. **JOIN** con multiples tablas:
+26. **JOIN** con multiples tablas:
     ```sql
     /*
         Campos de la tabla employees:
@@ -343,7 +303,7 @@
     JOIN salaries s ON de.emp_no = s.emp_no
     GROUP BY d.dept_name ORDER BY AVG(s.salary) DESC;
     ```
-36. Unión de consultas:
+27. Unión de consultas:
     ```sql
     /*
         Campos de la tabla country:
@@ -369,7 +329,7 @@
     UNION
     SELECT Name, Continent FROM country WHERE SurfaceArea > 9000000;
     ```
-37. Ejemplos de subconsultas (subquery):
+28. Ejemplos de subconsultas (subquery):
     ```sql
     -- Ejemplos de estructura de consultas con subconsultas:
     -- Ejemplo 1 (Subconsulta en SELECT):
